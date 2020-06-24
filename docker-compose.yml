@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  redis:
+    image: "redis:alpine"
+
+  flask:
+    build: .
+    ports:
+      - 8080:5000
+    env_file:
+      - ~/.env
+    depends_on:
+      - redis
+
+
+  celery:
+    build: .
+    command: celery -A app.celery worker -l info
+    depends_on:
+      - redis
