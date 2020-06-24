@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>Flask + Celery Examples</title>
+</head>
+<body>
+<h1>Flask + Celery Examples</h1>
+{% for message in get_flashed_messages() %}
+<p style="color: blue;">{{ message }}</p>
+{% endfor %}
+<form method="POST">
+    <p>Launch new test:
+        <input type="text" name="test_case_id" placeholder="test_case_id"></p>
+    <input type="submit" name="submit" value="Launch">
+</form>
+</body>
+</html>
