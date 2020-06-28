@@ -12,10 +12,16 @@ services:
       - ~/.env
     depends_on:
       - redis
+    links:
+      - redis
 
 
   celery:
     build: .
     command: celery -A app.celery worker -l info
+    env_file:
+      - ~/.env
     depends_on:
+      - redis
+    links:
       - redis
